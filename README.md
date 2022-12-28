@@ -10,10 +10,10 @@ npm ci
 
 ## 環境変数の設定
 
-ルートディレクトリに `.env.development`　を作成し、[RESAS API](https://opendata.resas-portal.go.jp/) にて APIKEY を取得してください。
+ルートディレクトリに `.env.development.local`　を作成し、[RESAS API](https://opendata.resas-portal.go.jp/) にて APIKEY を取得してください。
 
 ```bash
-# .env.development内
+# .env.development.local内
 REACT_APP_API_KEY=取得したAPIKEYを入力
 ```
 

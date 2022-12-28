@@ -1,9 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChoosePrefectures from './ChoosePrefectures';
 import PopulationGraph from './PopulationGraph';
+import { getPopulationData } from '../api';
 
 const Body = () => {
   const [selections, setSelections] = useState([]);
+  const [responseData, setResponseData] = useState([]);
+  const [graphLoadingMessage, setGraphLoadingMessage] = useState('');
+
+  const buildResponseData = () => {
+    setResponseData([]);
+    setGraphLoadingMessage('Loading graph...');
+    const promises = [];
+    selections.forEach((selection) => {
+      const [prefCode, prefName] = selection.split(',');
+      promises.push(
+        getPopulationData(prefCode).then((response) => {
+          const result = response.data.result.data[0].data;
+          setResponseData((prevResponseData) => {
+            if (prevResponseData.length === 0) {
+              return result.map((pair) => ({
+                year: pair.year,
+                [prefName]: pair.value,
+              }));
+            }
+            return prevResponseData.map((item, index) => ({
+              ...item,
+              [prefName]: result[index].value,
+            }));
+          });
+        })
+      );
+    });
+    Promise.all(promises).then(() => setGraphLoadingMessage(''));
+  };
+
+  useEffect(() => {
+    buildResponseData();
+  }, [selections]);
 
   const addPrefectureHandler = (prefCode) => {
     setSelections((prevSelections) => [...prevSelections, prefCode]);
@@ -21,7 +55,7 @@ const Body = () => {
         onAddPrefecture={(prefCode) => addPrefectureHandler(prefCode)}
         onRemovePrefecture={(prefCode) => removePrefectureHandler(prefCode)}
       />
-      <PopulationGraph />
+      <PopulationGraph result={responseData} message={graphLoadingMessage} />
     </>
   );
 };

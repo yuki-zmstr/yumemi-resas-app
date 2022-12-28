@@ -3,8 +3,8 @@
 ## 開発環境の構築
 
 ```Bash
-git clone https://github.com/yuki-zmstr/yumemi-test.git
-cd yumemi-test
+git clone https://github.com/yuki-zmstr/yumemi-resas-app.git
+cd yumemi-resas-app
 npm ci
 ```
 

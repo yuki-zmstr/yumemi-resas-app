@@ -1,7 +1,14 @@
 import React from 'react';
+import ChoosePrefectures from './ChoosePrefectures';
+import PopulationGraph from './PopulationGraph';
 
 const Body = () => {
-  return <div />;
+  return (
+    <>
+      <ChoosePrefectures />
+      <PopulationGraph />
+    </>
+  );
 };
 
 export default Body;

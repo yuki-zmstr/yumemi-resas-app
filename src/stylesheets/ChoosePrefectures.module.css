@@ -1,0 +1,47 @@
+.fieldset {
+  max-width: 780px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.region {
+  margin-bottom: 5px;
+}
+
+.prefectureSelections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-size: 21px;
+  margin: 0 5px;
+}
+
+.checkbox {
+  transform: scale(1.4);
+  margin-right: 5px;
+}
+
+button {
+  transform: scale(1.5);
+  margin-top: 40px;
+  width: 100px;
+}
+
+@media (max-width: 767px) {
+  .region {
+    margin-bottom: 2px;
+  }
+
+  .label {
+    font-size: 21px;
+  }
+
+  button {
+    margin-top: 30px;
+  }
+}

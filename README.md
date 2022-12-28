@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# 株式会社ゆめみフロンドエンド提出課題
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 開発環境の構築
 
-## Available Scripts
+```Bash
+git clone https://github.com/yuki-zmstr/yumemi-test.git
+cd yumemi-test
+npm ci
+```
 
-In the project directory, you can run:
+## 環境変数の設定
 
-### `npm start`
+ルートディレクトリに `.env.development`　を作成し、[RESAS API](https://opendata.resas-portal.go.jp/) にて APIKEY を取得してください。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# .env.development内
+REACT_APP_API_KEY=取得したAPIKEYを入力
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 起動方法
 
-### `npm test`
+```bash
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Format, Lint チェック
 
-### `npm run build`
+```bash
+npm format
+npm format-test #修正せずテストだけしたい場合
+npm lint
+npm lint-test #修正せずテストだけしたい場合
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## テスト
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm test
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 詰まった点
 
-### `npm run eject`
+1. api の呼び出しのテストコードを書くところで詰まっています。詳しくは `ChoosePrefectures.test.jsx` 内にコメントを残しています。
+   → ぜひ相談させてください！勉強したいので。
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 改善点
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. 地方ごとに、Select All ボタンと Clear All ボタンを追加。
+2. 描画ボタンを追加することで、チェックを入れたり外したりするたびにグラフが変わらないようにする。
+3. Custom Tooltip を、人口が多い順に並ぶようにする。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 最後に一言
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 凄く楽しんで取り組めました！アプリの favicon も御社のものを使わせて頂きました。　- 高橋

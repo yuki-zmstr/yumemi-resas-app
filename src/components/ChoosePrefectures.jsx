@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import regionData from '../utils/regionData';
 import { getPrefectures } from '../api';
 import styles from '../stylesheets/ChoosePrefectures.module.css';
 
-const ChoosePrefectures = () => {
+const ChoosePrefectures = ({ onAddPrefecture, onRemovePrefecture }) => {
   const [prefectures, setPrefectures] = useState([]);
   const [preLoadMessage, setPreLoadMessage] = useState('Loading prefectures...');
 
@@ -23,6 +24,14 @@ const ChoosePrefectures = () => {
     fetchData();
   }, []);
 
+  const checkboxChangeHandler = (e) => {
+    if (e.target.checked === true) {
+      onAddPrefecture(e.target.value);
+    } else {
+      onRemovePrefecture(e.target.value);
+    }
+  };
+
   const filterPrefecture = (key) => {
     return regionData[key].map((code) => {
       const result = prefectures ? prefectures.filter(({ prefCode }) => prefCode === code) : [];
@@ -33,7 +42,7 @@ const ChoosePrefectures = () => {
               id={result.length > 0 ? result[0].prefCode : ''}
               type='checkbox'
               value={result.length > 0 ? `${result[0].prefCode},${result[0].prefName}` : ''}
-              //   onChange={checkboxChangeHandler}
+              onChange={checkboxChangeHandler}
               className={styles.checkbox}
             />
             {result[0]?.prefName}
@@ -56,6 +65,16 @@ const ChoosePrefectures = () => {
       </div>
     </fieldset>
   );
+};
+
+ChoosePrefectures.propTypes = {
+  onAddPrefecture: PropTypes.func,
+  onRemovePrefecture: PropTypes.func,
+};
+
+ChoosePrefectures.defaultProps = {
+  onAddPrefecture: () => {},
+  onRemovePrefecture: () => {},
 };
 
 export default ChoosePrefectures;

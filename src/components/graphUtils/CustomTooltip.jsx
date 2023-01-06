@@ -20,13 +20,13 @@ const CustomTooltip = ({ active, payload, label }) => {
 CustomTooltip.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.instanceOf(Array),
-  label: PropTypes.number,
+  label: PropTypes.string,
 };
 
 CustomTooltip.defaultProps = {
   active: false,
   payload: [],
-  label: 0,
+  label: '',
 };
 
 export default CustomTooltip;

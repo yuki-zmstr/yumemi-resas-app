@@ -20,7 +20,7 @@ const Body = () => {
           setResponseData((prevResponseData) => {
             if (prevResponseData.length === 0) {
               return result.map((pair) => ({
-                year: pair.year,
+                year: pair.year.toString(),
                 [prefName]: pair.value,
               }));
             }

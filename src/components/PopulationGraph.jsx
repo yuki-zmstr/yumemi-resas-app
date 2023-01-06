@@ -16,6 +16,7 @@ import Lines from './graphUtils/Lines';
 import styles from '../stylesheets/PopulationGraph.module.css';
 
 const PopulationGraph = ({ result, message }) => {
+  result = result.length === 0 ? [{ year: '' }] : result; // x軸に年を表示するために、resultが空の場合はダミーのデータを入れる。
   return (
     <div className={styles.container}>
       <p>{message}</p>
